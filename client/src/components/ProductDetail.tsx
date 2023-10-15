@@ -1,14 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import { ProductService } from '../services/ProductService';
+import { ProductService } from '../services/productService';
 
 const ProductDetail: React.FunctionComponent = () => {
   const { productId } = useParams();
 
   const { isLoading, isError, data, error } =
-    ProductService.useFetchProduct(productId);
-
-  console.log(ProductService.useFetchProduct(productId));
+    ProductService.getProductById(productId);
 
   if (isLoading) {
     return (
@@ -19,7 +17,7 @@ const ProductDetail: React.FunctionComponent = () => {
   } else if (isError) {
     return (
       <div className="Detail">
-        <strong>Something went wrong: {error?.message}</strong>
+        <strong>Something went wrong: {(error as Error)?.message}</strong>
       </div>
     );
   }

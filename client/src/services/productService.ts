@@ -4,15 +4,15 @@ import { Product } from '../models/Product';
 const BASE_URL = 'https://fakestoreapi.com';
 
 export class ProductService {
-  static useFetchProducts = () => {
-    return useQuery<Product[], Error>('products', async () => {
+  static getAllProducts = () => {
+    return useQuery('products', async (): Promise<Product[]> => {
       const res = await fetch(`${BASE_URL}/products`);
       return res.json();
     });
   };
 
-  static useFetchProduct(id: string | undefined) {
-    return useQuery<Product, Error>(['product', id], async () => {
+  static getProductById(id: string | undefined) {
+    return useQuery(['product', id], async (): Promise<Product> => {
       const productId = Number(id);
       if (isNaN(productId)) {
         throw new Error('Invalid product ID');

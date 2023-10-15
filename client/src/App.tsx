@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import Main from './components/Main';
 import {
@@ -10,26 +10,32 @@ import {
 import Home from './components/Home';
 import ProductsList from './components/ProductsList';
 import ProductDetail from './components/ProductDetail';
-import { ProductService } from './services/ProductService';
+import { useDispatch } from 'react-redux';
+import {
+  loadProductsFailure,
+  loadProductsSuccess,
+  startLoading,
+} from './redux/reducers/productReducer';
+import { ProductService } from './services/productService';
 
 function App() {
-  const { isLoading, isError, data, error } = ProductService.useFetchProducts();
+  const dispatch = useDispatch();
+  try {
+    const response = ProductService.getAllProducts();
+    if (response.isError) {
+      dispatch(loadProductsFailure(response.error));
+    } else if (response.isSuccess) {
+      dispatch(loadProductsSuccess(response.data));
+    }
+  } catch (error) {
+    dispatch(loadProductsFailure(error));
+  }
 
   const routes = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<Main />}>
         <Route index element={<Home />} />
-        <Route
-          path="products"
-          element={
-            <ProductsList
-              products={data}
-              isLoading={isLoading}
-              isError={isError}
-              error={error}
-            />
-          }
-        />
+        <Route path="products" element={<ProductsList />} />
         <Route path="products/:productId" element={<ProductDetail />} />
       </Route>,
     ),

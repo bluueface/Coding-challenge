@@ -1,15 +1,14 @@
 import React from 'react';
-import { Product } from '../models/Product';
 import ProductCard from './ProductCard';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store/store';
 
-interface Props {
-  products: Product[] | undefined;
-  isLoading: boolean;
-  isError: boolean;
-  error: Error | null;
-}
-const ProductsList: React.FunctionComponent<Props> = (props) => {
-  const { products, isLoading, isError, error } = props;
+const ProductsList: React.FunctionComponent = () => {
+  const products = useSelector((state: RootState) => state.products.products);
+  const isLoading = useSelector((state: RootState) => state.products.isLoading);
+  const isError = useSelector((state: RootState) => state.products.isError);
+  const error = useSelector((state: RootState) => state.products.error);
+
   if (isLoading) {
     return (
       <div className="List">
@@ -19,7 +18,7 @@ const ProductsList: React.FunctionComponent<Props> = (props) => {
   } else if (isError) {
     return (
       <div className="List">
-        <strong>Something went wrong: {error?.message}</strong>
+        <strong>Something went wrong: {(error as Error)?.message}</strong>
       </div>
     );
   }
