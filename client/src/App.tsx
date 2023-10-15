@@ -14,22 +14,20 @@ import { useDispatch } from 'react-redux';
 import {
   loadProductsFailure,
   loadProductsSuccess,
-  startLoading,
 } from './redux/reducers/productReducer';
 import { ProductService } from './services/productService';
 
-function App() {
+const App: React.FunctionComponent = () => {
   const dispatch = useDispatch();
-  try {
-    const response = ProductService.getAllProducts();
+  const response = ProductService.getAllProducts();
+
+  useEffect(() => {
     if (response.isError) {
       dispatch(loadProductsFailure(response.error));
     } else if (response.isSuccess) {
       dispatch(loadProductsSuccess(response.data));
     }
-  } catch (error) {
-    dispatch(loadProductsFailure(error));
-  }
+  }, [response]);
 
   const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -42,6 +40,6 @@ function App() {
   );
 
   return <RouterProvider router={routes} />;
-}
+};
 
 export default App;
