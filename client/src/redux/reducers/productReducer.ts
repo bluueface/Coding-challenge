@@ -10,7 +10,7 @@ export interface ProductsState {
 
 const initialProductsState: ProductsState = {
   products: [],
-  isLoading: false,
+  isLoading: true,
   isError: false,
   error: null,
 };
@@ -19,11 +19,6 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState: initialProductsState,
   reducers: {
-    startLoading: (state) => {
-      state.isLoading = true;
-      state.isError = false;
-      state.error = null;
-    },
     loadProductsSuccess: (
       state,
       action: PayloadAction<Product[] | undefined>,
@@ -39,7 +34,7 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { startLoading, loadProductsSuccess, loadProductsFailure } =
+export const { loadProductsSuccess, loadProductsFailure } =
   productsSlice.actions;
 
 export default productsSlice.reducer;
