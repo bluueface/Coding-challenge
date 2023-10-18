@@ -23,8 +23,7 @@ const ProductsList: React.FunctionComponent = () => {
     );
   }
   return (
-    <div className="List">
-      <strong>Products</strong>
+    <div className="products">
       {products?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
