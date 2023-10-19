@@ -1,11 +1,12 @@
 import React from 'react';
-import { Product } from '../models/Product';
+import { Product } from '../../models/Product';
 import { useNavigate } from 'react-router-dom';
-import CardBody from './CardBody';
+import ProductCardBody from './ProductCardBody';
 
 interface Props {
   product: Product;
 }
+
 const ProductCard: React.FunctionComponent<Props> = (props) => {
   const { product } = props;
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const ProductCard: React.FunctionComponent<Props> = (props) => {
   return (
     <div className="card" onClick={() => navigate(`/products/${product.id}`)}>
       <img src={product.image} alt="image" />
-      <CardBody product={product} />
+      <ProductCardBody product={product} />
     </div>
   );
 };

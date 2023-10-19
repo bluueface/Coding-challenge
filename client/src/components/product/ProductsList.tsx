@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 import { useSelector } from 'react-redux';
-import { RootState } from '../redux/store/store';
+import { RootState } from '../../redux/store/store';
 
 const ProductsList: React.FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.products.products);

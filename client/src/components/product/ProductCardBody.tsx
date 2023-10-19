@@ -1,18 +1,18 @@
 import React, { ReactNode } from 'react';
-import { Product } from '../models/Product';
+import { Product } from '../../models/Product';
 import { Star, StarBorder, StarHalf } from '@mui/icons-material';
 
 interface Props {
   product: Product;
 }
-const CardBody: React.FunctionComponent<Props> = (props) => {
+const ProductCardBody: React.FunctionComponent<Props> = (props) => {
   const { product } = props;
 
   const containedStars = (number: number) => {
     const stars: ReactNode[] = [];
 
     for (let i = 0; i < number; i++) {
-      stars.push(<Star fontSize="small" color={'warning'} />);
+      stars.push(<Star key={i} fontSize="small" color={'warning'} />);
     }
     return stars;
   };
@@ -21,7 +21,9 @@ const CardBody: React.FunctionComponent<Props> = (props) => {
     const stars: ReactNode[] = [];
 
     for (let i = 0; i < number; i++) {
-      stars.push(<StarBorder fontSize="small" color={'warning'} />);
+      stars.push(
+        <StarBorder key={6 - number + i} fontSize="small" color={'warning'} />,
+      );
     }
     return stars;
   };
@@ -31,7 +33,13 @@ const CardBody: React.FunctionComponent<Props> = (props) => {
       return containedStars(rate).concat(outlinedStars(5 - rate));
     } else {
       const ratingStars: ReactNode[] = containedStars(Math.trunc(rate));
-      ratingStars.push(<StarHalf fontSize="small" color={'warning'} />);
+      ratingStars.push(
+        <StarHalf
+          key={Math.trunc(rate) + 1}
+          fontSize="small"
+          color={'warning'}
+        />,
+      );
       return ratingStars.concat(outlinedStars(4 - Math.trunc(rate)));
     }
   };
@@ -48,4 +56,4 @@ const CardBody: React.FunctionComponent<Props> = (props) => {
   );
 };
 
-export default CardBody;
+export default ProductCardBody;

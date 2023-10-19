@@ -8,14 +8,15 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 import Home from './components/Home';
-import ProductsList from './components/ProductsList';
-import ProductDetail from './components/ProductDetail';
+import ProductsList from './components/product/ProductsList';
+import ProductDetail from './components/product/ProductDetail';
 import { useDispatch } from 'react-redux';
 import {
   loadProductsFailure,
   loadProductsSuccess,
 } from './redux/reducers/productReducer';
 import { ProductService } from './services/productService';
+import Cart from './components/cart/Cart';
 
 const App: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const App: React.FunctionComponent = () => {
         <Route index element={<Home />} />
         <Route path="products" element={<ProductsList />} />
         <Route path="products/:productId" element={<ProductDetail />} />
+        <Route path="cart" element={<Cart />} />
       </Route>,
     ),
   );
