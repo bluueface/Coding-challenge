@@ -6,7 +6,9 @@ import { RootState } from '../redux/store/store';
 
 const Header: React.FunctionComponent = () => {
   const navigate = useNavigate();
+
   const cartItems = useSelector((state: RootState) => state.cart.items);
+  const className = useSelector((state: RootState) => state.header.className);
 
   const { length } = cartItems;
   let totalItems = 0;
@@ -14,8 +16,6 @@ const Header: React.FunctionComponent = () => {
   for (const item of cartItems) {
     totalItems = totalItems + item.quantity;
   }
-
-  console.log('cartItems ===>', cartItems);
 
   const renderNavItem = (to: string, label: string) => (
     <li>
@@ -28,10 +28,10 @@ const Header: React.FunctionComponent = () => {
     </li>
   );
   return (
-    <header className="header">
+    <header className={className}>
       <nav className="nav">
         <img
-          src={require('../logo.png')}
+          src={require('../assets/panda.png')}
           alt="logo"
           className="nav-logo"
           id="logo"

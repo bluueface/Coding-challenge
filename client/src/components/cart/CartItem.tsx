@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CartItem } from '../../models/Cart';
-import IncreaseDecreaseQuantity from '../common/IncreaseDecreaseQuantity';
+import UpdateQuantity from '../product/UpdateQuantity';
 import {
   removeItemFromCart,
   updateItemQuantity,
@@ -34,8 +34,8 @@ const CartItemComponent: React.FunctionComponent<Props> = (props) => {
       <img src={product?.image} alt="image" />
       <div className="details">
         <span>{product?.title}</span>
-        <strong>{`${product?.price} $`}</strong>
-        <IncreaseDecreaseQuantity
+        <strong>{`$${product?.price}`}</strong>
+        <UpdateQuantity
           quantity={item.quantity}
           onChange={setQuantity}
           className="quantity quantity-card"

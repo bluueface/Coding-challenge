@@ -1,23 +1,19 @@
-$color-primary: #5ec576;
-$color-secondary: #ffcb03;
-$color-tertiary: #ff585f;
-$color-primary-darker: #4bbb7d;
-$color-secondary-darker: #ffbb00;
-$color-tertiary-darker: #fd424b;
-$color-primary-opacity: #5ec5763a;
-$color-secondary-opacity: #ffcd0331;
-$color-tertiary-opacity: #ff58602d;
-
-$gradient-primary: linear-gradient(to top left, #39b385, #9be15d);
-$gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
 
 .App {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
   color: #444;
   background-color: #edefed;
-
 }
+
+.body {
+  min-height: 100vh;
+}
+
+.margin-top  {
+  margin-top: 5.2rem;
+}
+
 .header {
   position: fixed;
   top: 0;
@@ -26,19 +22,25 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   background-color: white;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
+
+ .before-scroll {
+   background-color: transparent;
+   box-shadow: none;
+ }
+
 .nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 5.2rem;
   padding-left: 6rem;
   padding-right: 6rem;
 }
 
 .nav-logo {
-  height: 4rem;
-  width: 6rem;
+  height: 3.1rem;
+  width: fit-content;
   transition: all 0.3s;
 }
 
@@ -77,7 +79,7 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   font-size: 1rem;
   font-weight: 400;
   text-decoration: none;
-  padding: 0.6rem 1.2rem;
+  padding: 0.45rem 1.2rem;
   border-radius: 5rem;
 
   &:hover {
@@ -89,9 +91,15 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   background-color: #f0f3f0;
 }
 
-.body {
-  min-height: 100vh;
-  padding-top: 5rem;
+.home {
+  background-image: linear-gradient(to bottom right, #39b385, #9be15d);
+  height: 100vh;
+  padding: 13rem 6rem 0 6rem;
+
+  h1 {
+    margin: 0;
+    font-size: xxx-large;
+  }
 }
 
 .products {
@@ -223,7 +231,7 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   border: none;
   cursor: pointer;
   border-radius: 0.2rem;
-  padding: 0.9rem;
+  padding: 0.9rem 1.5rem;
   margin: 1rem 0rem;
   width: 100%;
 
@@ -241,6 +249,23 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
   }
 }
 
+.contained {
+  color: #444;
+  background-color: transparent;
+  width: fit-content;
+  border-radius: 5rem ;
+  border: 2px solid #444;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  &:hover {
+    background-image: linear-gradient(to bottom right, #39b385, #9be15d);
+  }
+}
+
 .buttons {
   width: 100%;
   display: flex;
@@ -252,7 +277,6 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
     width: 50%;
   }
 }
-
 
 .modal {
   display: none;
@@ -335,9 +359,9 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
 
   .validate {
     width: 40%;
-    min-height: 15rem;
     padding: 1rem;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    background-color: white;
 
     .cost{
       display: flex;
@@ -350,6 +374,27 @@ $gradient-secondary: linear-gradient(to top left, #ffb003, #ffcb03);
     font-weight: bold;
   }
 
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 2rem;
+}
+
+.layout {
+  position: fixed;
+  padding-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+  }
 }
 
 .footer {

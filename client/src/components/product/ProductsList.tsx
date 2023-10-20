@@ -2,6 +2,9 @@ import React from 'react';
 import ProductCard from './ProductCard';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
+import Loading from '../common/Loading';
+import ErrorMessage from '../common/ErrorMessage';
+import ChangeHeaderStyle from '../common/ChangeHeaderStyle';
 
 const ProductsList: React.FunctionComponent = () => {
   const products = useSelector((state: RootState) => state.products.products);
@@ -10,24 +13,18 @@ const ProductsList: React.FunctionComponent = () => {
   const error = useSelector((state: RootState) => state.products.error);
 
   if (isLoading) {
-    return (
-      <div className="List">
-        <strong>Loading ...</strong>
-      </div>
-    );
+    return <Loading />;
   } else if (isError) {
-    return (
-      <div className="List">
-        <strong>Something went wrong: {(error as Error)?.message}</strong>
-      </div>
-    );
+    return <ErrorMessage message={(error as Error).message} />;
   }
   return (
-    <div className="products">
-      {products?.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
-    </div>
+    <ChangeHeaderStyle>
+      <div className="products margin-top">
+        {products?.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    </ChangeHeaderStyle>
   );
 };
 

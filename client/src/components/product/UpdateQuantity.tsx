@@ -5,9 +5,9 @@ interface Props {
   onChange: (number: number) => void;
   className: string;
 }
-const IncreaseDecreaseQuantity: React.FunctionComponent<
-  PropsWithChildren<Props>
-> = (props) => {
+const UpdateQuantity: React.FunctionComponent<PropsWithChildren<Props>> = (
+  props,
+) => {
   const { children, quantity, onChange, className } = props;
   return (
     <div className="actions">
@@ -26,4 +26,4 @@ const IncreaseDecreaseQuantity: React.FunctionComponent<
     </div>
   );
 };
-export default IncreaseDecreaseQuantity;
+export default UpdateQuantity;

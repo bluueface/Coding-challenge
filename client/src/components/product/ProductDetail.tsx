@@ -11,7 +11,10 @@ import {
   increaseItemQuantity,
 } from '../../redux/reducers/cartReducer';
 import { CartItem } from '../../models/Cart';
-import IncreaseDecreaseQuantity from '../common/IncreaseDecreaseQuantity';
+import UpdateQuantity from './UpdateQuantity';
+import Loading from '../common/Loading';
+import ErrorMessage from '../common/ErrorMessage';
+import ChangeHeaderStyle from '../common/ChangeHeaderStyle';
 
 const ProductDetail: React.FunctionComponent = () => {
   const { productId } = useParams();
@@ -73,56 +76,50 @@ const ProductDetail: React.FunctionComponent = () => {
   );
 
   if (isLoading) {
-    return (
-      <div className="Detail">
-        <strong>Loading...</strong>
-      </div>
-    );
+    return <Loading />;
   } else if (isError) {
-    return (
-      <div className="Detail">
-        <strong>Something went wrong: {(error as Error)?.message}</strong>
-      </div>
-    );
+    return <ErrorMessage message={(error as Error).message} />;
   }
   return (
-    <div className="product-details">
-      {data && (
-        <>
-          <div className="image-wrapper">
-            <img src={data?.image} alt="logo" />
-          </div>
-          <div className="details">
-            <ProductCardBody product={data} />
-            <hr className="hr" />
-            <div className="category">
-              <span>Category: </span>
-              <strong>{data.category}</strong>
+    <ChangeHeaderStyle>
+      <div className="product-details margin-top">
+        {data && (
+          <>
+            <div className="image-wrapper">
+              <img src={data?.image} alt="logo" />
             </div>
-            <IncreaseDecreaseQuantity
-              quantity={quantity}
-              onChange={setQuantity}
-              className="quantity"
-            >
-              <Button
-                label="Add to cart"
-                onClick={() => {
-                  addToCart();
-                  openModal();
-                }}
-                className="btn"
-              />
-            </IncreaseDecreaseQuantity>
-            <hr className="hr" />
-            <div>
-              <span>Description: </span>
-              <p className="description">{data.description}</p>
+            <div className="details">
+              <ProductCardBody product={data} />
+              <hr className="hr" />
+              <div className="category">
+                <span>Category: </span>
+                <strong>{data.category}</strong>
+              </div>
+              <UpdateQuantity
+                quantity={quantity}
+                onChange={setQuantity}
+                className="quantity"
+              >
+                <Button
+                  label="Add to cart"
+                  onClick={() => {
+                    addToCart();
+                    openModal();
+                  }}
+                  className="btn"
+                />
+              </UpdateQuantity>
+              <hr className="hr" />
+              <div>
+                <span>Description: </span>
+                <p className="description">{data.description}</p>
+              </div>
             </div>
-          </div>
-        </>
-      )}
-      {isOpen && renderModel()}
-    </div>
+          </>
+        )}
+        {isOpen && renderModel()}
+      </div>
+    </ChangeHeaderStyle>
   );
 };
 

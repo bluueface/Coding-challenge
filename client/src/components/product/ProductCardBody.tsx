@@ -47,7 +47,7 @@ const ProductCardBody: React.FunctionComponent<Props> = (props) => {
   return (
     <div className="card-body">
       <span>{product.title}</span>
-      <strong>{`${product.price} $`}</strong>
+      <strong>{`$${product.price}`}</strong>
       <div>
         {renderRatingStars(product.rating.rate)}
         <span>({product.rating.count})</span>

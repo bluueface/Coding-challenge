@@ -18,7 +18,7 @@ import {
 import { ProductService } from './services/productService';
 import Cart from './components/cart/Cart';
 
-const App: React.FunctionComponent = () => {
+function App() {
   const dispatch = useDispatch();
   const response = ProductService.getAllProducts();
 
@@ -42,6 +42,6 @@ const App: React.FunctionComponent = () => {
   );
 
   return <RouterProvider router={routes} />;
-};
+}
 
 export default App;
