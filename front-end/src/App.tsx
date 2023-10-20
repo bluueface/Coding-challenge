@@ -20,6 +20,7 @@ import Cart from './components/cart/Cart';
 
 function App() {
   const dispatch = useDispatch();
+
   const response = ProductService.getAllProducts();
 
   useEffect(() => {
