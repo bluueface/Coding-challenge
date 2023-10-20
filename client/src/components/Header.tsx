@@ -42,7 +42,7 @@ const Header: React.FunctionComponent = () => {
           <li>
             <div onClick={() => navigate('/cart')}>
               <ShoppingCart
-                sx={{ color: 'black', fontSize: '1.5rem', alignSelf: 'center' }}
+                sx={{ color: '#444', fontSize: '1.5rem', alignSelf: 'center' }}
               />
               {length > 0 && <span>{totalItems}</span>}
             </div>

@@ -56,7 +56,7 @@
     flex-direction: row;
     cursor: pointer;
     padding-left: 2rem;
-    border-left: 0.15rem solid black;
+    border-left: 0.125rem solid #444;
     height: 2.5rem;
   }
 
@@ -75,7 +75,7 @@
 }
 
 .link {
-  color: #000000;
+  color: black;
   font-size: 1rem;
   font-weight: 400;
   text-decoration: none;
