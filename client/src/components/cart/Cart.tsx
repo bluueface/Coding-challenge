@@ -6,11 +6,12 @@ import CartItemComponent from './CartItem';
 import ChangeHeaderStyle from '../common/ChangeHeaderStyle';
 
 const Cart: React.FunctionComponent = () => {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const cart = useSelector((state: RootState) => state.cart);
+  const { items } = cart;
 
   let totalItems = 0;
 
-  for (const item of cartItems) {
+  for (const item of items) {
     totalItems = totalItems + item.quantity;
   }
 
@@ -37,15 +38,15 @@ const Cart: React.FunctionComponent = () => {
     <ChangeHeaderStyle>
       <div className="cart margin-top">
         <div className="items">
-          {cartItems.map((item) => (
+          {items.map((item) => (
             <CartItemComponent key={item?.product?.id} item={item} />
           ))}
         </div>
         <div className="validate">
-          {renderValueLabel('Subtotal', 150)}
+          {renderValueLabel('Subtotal', cart.total)}
           {renderValueLabel('Shipping', 0)}
           <hr className="hr" />
-          {renderValueLabel('Total amount', 150, 'bold')}
+          {renderValueLabel('Total amount', cart.total, 'bold')}
           <Button label="Validate" onClick={() => {}} className="btn" />
         </div>
       </div>

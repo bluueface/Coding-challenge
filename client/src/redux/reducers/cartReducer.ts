@@ -3,10 +3,15 @@ import { CartItem } from '../../models/Cart';
 
 export interface CartState {
   items: CartItem[];
+  total: number;
 }
+
+const calculateTotal = (item: CartItem) =>
+  item.product ? item.product.price * item.quantity : 0;
 
 const initialCartState: CartState = {
   items: [],
+  total: 0,
 };
 
 export const cartSlice = createSlice({
@@ -14,7 +19,12 @@ export const cartSlice = createSlice({
   initialState: initialCartState,
   reducers: {
     addItemToCart: (state, action: PayloadAction<CartItem[]>) => {
+      let total = 0;
+      for (const item of action.payload) {
+        total += calculateTotal(item);
+      }
       state.items = action.payload;
+      state.total = total;
     },
     increaseItemQuantity: (state, action: PayloadAction<CartItem>) => {
       const item = state.items.find(
@@ -22,6 +32,7 @@ export const cartSlice = createSlice({
       );
       if (item) {
         item.quantity += action.payload.quantity;
+        state.total += calculateTotal(item);
       }
     },
     updateItemQuantity: (state, action: PayloadAction<CartItem>) => {
@@ -30,6 +41,7 @@ export const cartSlice = createSlice({
       );
       if (item) {
         item.quantity = action.payload.quantity;
+        state.total = calculateTotal(item);
       }
     },
     removeItemFromCart: (state, action: PayloadAction<CartItem>) => {
