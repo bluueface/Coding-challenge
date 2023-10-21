@@ -3,34 +3,35 @@ package de.imedia24.shop.domain.model
 import org.hibernate.annotations.UpdateTimestamp
 import java.math.BigDecimal
 import java.time.ZonedDateTime
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.*
 
 @Entity
 @Table(name = "product")
 @NoArg
 data class Product(
     @Id
-    @Column(name = "sku", nullable = false)
-    val sku: String,
+    @Column(name = "product_id", nullable = false)
+    var sku: String,
 
     @Column(name = "name", nullable = false)
-    val name: String,
+    var name: String,
 
     @Column(name = "description")
-    val description: String? = null,
+    var description: String? = null,
 
     @Column(name = "price", nullable = false)
-    val price: BigDecimal,
+    var price: BigDecimal,
+
+    @OneToOne(cascade = [CascadeType.ALL], orphanRemoval = true)
+    @JoinColumn(name = "stock_id")
+    var stock: Stock? = null,
 
     @UpdateTimestamp
     @Column(name = "created_at", nullable = false)
-    val createdAt: ZonedDateTime,
+    var createdAt: ZonedDateTime = ZonedDateTime.now(),
 
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
-    val updatedAt: ZonedDateTime,
+    var updatedAt: ZonedDateTime = ZonedDateTime.now(),
 )
 

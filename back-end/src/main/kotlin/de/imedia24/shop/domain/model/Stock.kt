@@ -8,10 +8,9 @@ import javax.persistence.*
 data class Stock (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    @Column(name = "stock_id", nullable = false)
+    var id: Long,
 
     @Column(name = "quantity", nullable = false)
-    val quantity: Int
-){
-
-}
+    var quantity: Int
+)
