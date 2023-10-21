@@ -13,4 +13,7 @@ data class Stock (
 
     @Column(name = "quantity", nullable = false)
     var quantity: Int
-)
+){
+    // -1 is just a default value JPA will take care and generate new value
+    constructor(quantity: Int) : this(-1,quantity = quantity)
+}

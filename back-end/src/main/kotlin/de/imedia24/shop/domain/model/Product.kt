@@ -28,10 +28,10 @@ data class Product(
 
     @UpdateTimestamp
     @Column(name = "created_at", nullable = false)
-    var createdAt: ZonedDateTime = ZonedDateTime.now(),
+    var createdAt: ZonedDateTime,
 
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
-    var updatedAt: ZonedDateTime = ZonedDateTime.now(),
+    var updatedAt: ZonedDateTime,
 )
 
