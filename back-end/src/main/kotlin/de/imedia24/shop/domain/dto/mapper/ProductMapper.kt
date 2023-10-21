@@ -10,7 +10,8 @@ class ProductMapper {
                     sku = product.sku,
                     name = product.name,
                     description = product.description ?: "",
-                    price = product.price
+                    price = product.price,
+                    quantity = product.stock?.quantity ?: 0
             )
         }
     }
