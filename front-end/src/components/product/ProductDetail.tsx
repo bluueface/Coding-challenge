@@ -86,7 +86,7 @@ const ProductDetail: React.FunctionComponent = () => {
         {data && (
           <>
             <div className="image-wrapper">
-              <img src={data?.image} alt="logo" />
+              <img src={data?.image} alt="product-image" />
             </div>
             <div className="details">
               <ProductCardBody product={data} />
