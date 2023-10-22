@@ -52,7 +52,7 @@ class ProductController(private val productService: ProductService){
     }
 
     @PatchMapping("/product/partial-update/{sku}", produces = ["application/json;charset=utf-8"])
-    fun partialUpdateProduct(
+    fun updateProductPartially(
             @PathVariable("sku") sku: String,
             @RequestBody partialProduct: PartialProductDto
     ): ResponseEntity<ProductDto> {
