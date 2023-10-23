@@ -1,16 +1,36 @@
-# iMedia24 Coding challenge
+# Spring Boot Application Dockerization
 
-### Reference Documentation
-For further reference, please consider the following sections:
+This repository contains a Dockerfile to help you containerize a Spring Boot application using an official OpenJDK 8 image.
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Official Kotlin documentation](https://kotlinlang.org/docs/home.html)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.3/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.3/gradle-plugin/reference/html/#build-image)
-* [Flyway database migration tool](https://flywaydb.org/documentation/)
+## Prerequisites
 
-### Additional Links
-These additional references should also help you:
+#### [Docker](https://www.docker.com/get-started) must be installed on your system.
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+## Build and Run the Docker Image
+
+#### 1. Clone this repository to your local machine
+```bash
+git clone https://gitlab.com/azizwaadoud7/coding-challenge.git
+````
+
+#### 2. Navigate to the directory containing the Dockerfile
+```bash
+cd <repository-directory>
+```
+
+#### 3. Build the Docker image:
+
+```bash
+docker build -t <your-image-name> .
+```
+
+#### 4. Running the Docker Container:
+```bash
+docker run -p <port>:<port> .
+```
+
+#### 5. Accessing Your Application : 
+```bash
+http://localhost:<port>
+```
 
