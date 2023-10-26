@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import ChangeHeaderStyle from './common/ChangeHeaderStyle';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store/store';
+import { useDispatch } from 'react-redux';
 import { changeHeaderStyle } from '../redux/reducers/headerReducer';
 import Button from './common/Button';
 import { East } from '@mui/icons-material';
@@ -10,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 const Home: React.FunctionComponent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  useSelector((state: RootState) => state.header.className);
 
   const listenScrollEvent = () => {
     if (window.scrollY > 100) {
@@ -44,6 +42,7 @@ const Home: React.FunctionComponent = () => {
           </Button>
         </div>
       </div>
+      <div className="something">Coming soon !</div>
     </ChangeHeaderStyle>
   );
 };

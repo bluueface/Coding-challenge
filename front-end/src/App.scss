@@ -51,7 +51,6 @@
   list-style: none;
 
   div {
-    height: 3rem;
     display: flex;
     flex-direction: row;
     cursor: pointer;
@@ -93,13 +92,22 @@
 
 .home {
   background-image: linear-gradient(to bottom right, #39b385, #9be15d);
-  height: 100vh;
+  height: 68vh;
   padding: 13rem 6rem 0 6rem;
 
   h1 {
     margin: 0;
     font-size: xxx-large;
   }
+}
+
+.something {
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  font-size: xxx-large;
 }
 
 .products {
@@ -152,7 +160,7 @@
 
 .hr {
   border: none;
-  margin: 1rem 0rem;
+  margin: 1rem 0;
   background-color: #E5E5E5;
   height: 0.1rem;
 }
@@ -232,7 +240,7 @@
   cursor: pointer;
   border-radius: 0.2rem;
   padding: 0.9rem 1.5rem;
-  margin: 1rem 0rem;
+  margin: 1rem 0;
   width: 100%;
 
   &:hover {

@@ -28,9 +28,11 @@ const Cart: React.FunctionComponent = () => {
 
   if (totalItems === 0) {
     return (
-      <div className="empty-cart margin-top">
-        <strong>No item in the cart</strong>
-      </div>
+      <ChangeHeaderStyle>
+        <div className="empty-cart margin-top">
+          <strong>No item in the cart</strong>
+        </div>
+      </ChangeHeaderStyle>
     );
   }
 
