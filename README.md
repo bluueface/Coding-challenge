@@ -25,7 +25,7 @@ Additionally, implement the following testing strategies:
 interactions. For adding items to the cart.
 - Unit Tests: Write a unit test example using react-testing-library.
 
-## 2. Back End
+## 2. Back End:
 
 We have a store where we list our products, and we want to expose APIs to get details and
 manage those products.
