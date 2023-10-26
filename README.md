@@ -1,36 +1,45 @@
-# Spring Boot Application Dockerization
+# Coding Challenge 
 
-This repository contains a Dockerfile to help you containerize a Spring Boot application using an official OpenJDK 8 image.
+## 1. Front End
 
-## Prerequisites
+Build a mini eCommerce website where users can browse and purchase products. You can
+use the [Fake Store API](https://fakestoreapi.com) as the backend API for fetching data. The
+application should include the following features:
 
-#### [Docker](https://www.docker.com/get-started) must be installed on your system.
+- Product Listing: Display a list of products with their image, names, prices, and
+ratings.
+- Product Details: When a user clicks on a product, show the detailed information of
+that product, including title, description, category and ratings.
+- Shopping Cart: Allow users to add products to a shopping cart and display the total
+number of items in the cart. Include features like increasing or decreasing the
+quantity of items in the cart, removing items, and displaying the total price.
+- 
+Remember to structure your codebase using component-based architecture, separate
+concerns using Redux for state management, use React Query for data fetching, follow best
+practices for writing clean and maintainable code, and utilizing modern features like React
+hooks and functional components
+For styling, use Sass to style your components.
+Additionally, implement the following testing strategies:
 
-## Build and Run the Docker Image
+- E2e Tests: Write end-to-end tests using Cypress to simulate user flows and
+interactions. For adding items to the cart.
+- Unit Tests: Write a unit test example using react-testing-library.
 
-#### 1. Clone this repository to your local machine
-```bash
-git clone https://gitlab.com/azizwaadoud7/coding-challenge.git
-````
+## 2. Back End
 
-#### 2. Navigate to the directory containing the Dockerfile
-```bash
-cd <repository-directory>
-```
+We have a store where we list our products, and we want to expose APIs to get details and
+manage those products.
 
-#### 3. Build the Docker image:
+A product is identified by SKU (Stock Keeping Unit), has a name, description and price.
 
-```bash
-docker build -t <your-image-name> .
-```
+Tasks:
 
-#### 4. Running the Docker Container:
-```bash
-docker run -p <port>:<port> .
-```
-
-#### 5. Accessing Your Application : 
-```bash
-http://localhost:<port>
-```
-
+- find and complete the missing implementation of this API: /product/{sku}
+- add an endpoint to get list of product details by list of SKUs:
+/products?skus=123,4567,8901,2345,67789
+- we want to add stock information to the product, for that we want to extend the database
+schema (check flyway) and get the information in this API: /product/{sku}
+- Add an endpoint to add product.
+- add an endpoint to partially update a product (updating name, description and price).
+- add unit test to the controller API you exposed in 1 and 4
+- put your Java application into Docker container and document in README file how to use it.
